@@ -1,4 +1,5 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
+from fixture.session import SessionHelper
 
 
 class Application:
@@ -6,10 +7,7 @@ class Application:
     def __init__(self):
         self.driver = WebDriver(executable_path='/Users/max/sanbox_python/python_training/chromedriver')
         self.driver.implicitly_wait(60)
-
-    def logout(self):
-        driver = self.driver
-        driver.find_element_by_link_text("Logout").click()
+        self.session = SessionHelper(self)
 
     def return_to_groups_page(self):
         driver = self.driver
@@ -38,18 +36,6 @@ class Application:
         driver = self.driver
         # open groups page
         driver.find_element_by_link_text("groups").click()
-
-    def login(self, username, password):
-        driver = self.driver
-        # login
-        self.open_home_page()
-        driver.find_element_by_name("user").click()
-        driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("user").send_keys(username)
-        driver.find_element_by_name("pass").click()
-        driver.find_element_by_name("pass").clear()
-        driver.find_element_by_name("pass").send_keys(password)
-        driver.find_element_by_css_selector("input[type='submit']").click()
 
     def open_home_page(self):
         driver = self.driver
