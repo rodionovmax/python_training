@@ -8,7 +8,7 @@ class Application:
 
     def __init__(self):
         self.driver = WebDriver(executable_path='/Users/max/sanbox_python/python_training/chromedriver')
-        self.driver.implicitly_wait(60)
+        self.driver.implicitly_wait(5)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
 
